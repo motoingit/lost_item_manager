@@ -22,4 +22,15 @@ git commit -m "message"
 
 git push -u origin main
 
+
+//! some harsh git
+
+//* Undo all added files (before commit):
+git reset
+
+//* //// If you want to go nuclear — discard all uncommitted changes and unstage everything:
+git reset --hard
+ 
+
+
 //? //////////////////////////////////////////////////////////////////////////////////////////////////
