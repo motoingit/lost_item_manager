@@ -1,0 +1,8 @@
+Mohit Singh - Contribution Details
+
+Role: Front End Developer
+
+Contributions:
+- Developed main UI components
+- Implemented responsive design and accessibility fixes
+- Coordinated frontend-backend integration

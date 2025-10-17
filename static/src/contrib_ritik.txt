@@ -1,0 +1,8 @@
+Ritik Sharma - Contribution Details
+
+Role: Front End Developer
+
+Contributions:
+- Implemented responsive grids
+- Improved alignment and layout
+- Helped with UI testing

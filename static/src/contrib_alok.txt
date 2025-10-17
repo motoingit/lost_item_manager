@@ -1,0 +1,8 @@
+Anirudh Bisht - Contribution Details
+
+Role: Front End Developer
+
+Contributions:
+- Built interactive forms and validations
+- Implemented client-side search and sorting
+- Created reusable UI components
