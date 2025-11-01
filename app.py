@@ -1,19 +1,19 @@
-
 """
-
 Lost and Found Management System (by flask)
 
-It provides functionality to:
+It provides functionality to :
     1. Report lost items
     2. Search for lost items using linear search
     3. Update item status
     4. Track item history
     5. Maintain logs of all actions
     6. Undo/Redo operations using stack data structure
-    7. sorting list by x
+    7. sorting list by x way
 
-Author: Mohit
-Date: October 2025
+Devloped By Team - Stubborn Spirit's
+Date initiation : September 2025
+Date deployment : Novmber 2025
+
 """
 
 from flask import Flask, render_template, request, redirect
@@ -22,29 +22,50 @@ import pytz                   #
 import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
-from typing import List, Optional, Dict, Any
+# def undo(self) -> Dict[str, Any] | None:
+# def undo(self) -> Optional[Dict[str, Any]]:
+""" both commnets are same"""
+from typing import List, Optional, Dict, Any 
+
 app = Flask(__name__)
+#! app.config.from_object('config.Config')
 
 # Stack implementation for undo/redo operations
 class ActionStack:
+    """
+    #?(list)actions = [{'type': 'insert', 'value': 'A'}, {'type': 'insert', 'value': 'B'}]
+    #?(list[x])action = {'type': 'insert', 'value': 'A'}
+
+    """
     def __init__(self):
         self.actions: List[Dict[str, Any]] = []
         self.position: int = -1
+        print("\nStack Initialized\n")
     
-    def push(self, action: Dict[str, Any]) -> None:
+    #if i undo and then write some data/ it will trim the redos
+    def push(self, action: Dict[str, Any]) -> None: # -> None is the return type
         # Clear any redo actions
+        """
+        data = ['A', 'B', 'C', 'D']
+        print(data[:2])   # ['A', 'B']
+        print(data[1:3])  # ['B', 'C']
+        print(data[2:])   # ['C', 'D']
+
+        """
         self.actions = self.actions[:self.position + 1]
-        self.actions.append(action)
+        self.actions.append(action) # add the data to stack (LIST FUCTION)
         self.position += 1
     
-    def undo(self) -> Optional[Dict[str, Any]]:
+    def undo(self) -> Dict[str, Any] | None:
         if self.position >= 0:
             action = self.actions[self.position]
             self.position -= 1
+            print("\none action is undo\n")
             return action
+        print("\nNo more actions to undo\n")
         return None
     
-    def redo(self) -> Optional[Dict[str, Any]]:
+    def redo(self) -> Dict[str, Any] | None:
         if self.position + 1 < len(self.actions):
             self.position += 1
             return self.actions[self.position]
@@ -55,17 +76,29 @@ action_stack = ActionStack()
 
 # Configure instance path / database path
 #__file__ == path of current  file its written
+"""
+#! os.path.dirname(__file__) is removing file form the directory
+#! 💡 Think of it like this:
+#!          mkdir → makes one door only.
+#!          makedirs → builds the whole hallway if needed.
+#!    
+#!          makedirs → builds the whole hallway if needed.
+
+"""
 app.config['INSTANCE_PATH'] = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance')
 os.makedirs(app.config['INSTANCE_PATH'], exist_ok=True)
 
+
 #'sqlite:///lost_item.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.config['INSTANCE_PATH'], 'lost_items.db')
+#? additional dataabase
 app.config['SQLALCHEMY_BINDS'] = { 'log': 'sqlite:///' + os.path.join(app.config['INSTANCE_PATH'], 'log.db') }
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
 # Set timezone to IST for consistent timestamps
+#! ist is signalling const value or (one time initiated), although any variable can do the job
 IST = pytz.timezone('Asia/Kolkata')
 
 class LostItem(db.Model):
@@ -77,33 +110,39 @@ class LostItem(db.Model):
         title: Name or brief title of the lost item
         desc: Detailed description of the item
         date_created: Timestamp when the item was reported
+
     """
+    # a tuple in Python is a fixed, ordered collection of elements, kind of like a list that you can’t modify once created.
+    #? t = (10, "hello", 3.14)
     sno = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     desc = db.Column(db.String(500), nullable=False)
     date_created = db.Column(db.DateTime, default=lambda: datetime.now(IST))
-
+#! So yes — it auto-increments linearly, not circularly. Once sno = 3, it won’t go back to 1 unless you reset the database.
     def __repr__(self) -> str:
         return f"Item #{self.sno} - {self.title}"
 
 class Log(db.Model):
     __bind_key__ = 'log'
     id = db.Column(db.Integer, primary_key=True)
-    level = db.Column(db.String(50), nullable=False)
-    message = db.Column(db.String(500), nullable=False)
+    level = db.Column(db.String(10), nullable=False)
+    message = db.Column(db.String(100), nullable=False)
     timestamp = db.Column(db.DateTime, default=lambda: datetime.now(IST))
 
     def __repr__(self):
-        return f"[{self.timestamp}] [{self.level}] {self.message}"
+        return f"[{self.timestamp}] [{self.level}] [{self.message}]"
 
 def log_message(level, message):
     log = Log(level=level, message=message)
     db.session.add(log)
     db.session.commit()
 
+# some terminal commanes
+#! flask run
+#? export FLASK_ENV=devlopment or production
 @app.cli.command("init-db")
 def init_db_command():
-    """Initialize the database."""
+    #! Initialize the database.
     try:
         db.create_all()
         print("Initialized the database.")
@@ -123,6 +162,7 @@ def index():
         desc = request.form['desc']
         if title:  # Basic validation
             item = LostItem(title=title, desc=desc)
+            print(item) #! initiate __repr__
             db.session.add(item)
             db.session.commit()
             # Store action for undo
@@ -227,7 +267,7 @@ def delete(sno):
 @app.route("/undo")
 def undo():
     """Undo the last action using stack data structure."""
-    action = action_stack.undo()
+    action = action_stack.undo() # returing a list variable
     if action:
         if action['type'] == 'add':
             # Undo an add operation by deleting
@@ -291,8 +331,11 @@ def about():
 def logs():
     """Display system logs showing all actions and their timestamps."""
     all_logs = Log.query.all()
+    print(all_logs)
     return render_template('logs.html', all_logs=all_logs)
 
 if __name__ == '__main__':
-    print('Im On Main\n')
+    print("I'm On Main\n")
+    #? default
+    #! print(app.config) #! run it
     app.run(debug=True) # devlopment mode : on(python app.py) || off(flask run)
