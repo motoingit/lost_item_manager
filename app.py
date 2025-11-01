@@ -132,7 +132,7 @@ def index():
                 'data': {'title': title, 'desc': desc}
             })
             log_message('INFO', f'New lost item reported: {title}')
-        return redirect('/')
+            return redirect('/')
 
     # Get search parameters
     search_query = request.args.get('search', '')
