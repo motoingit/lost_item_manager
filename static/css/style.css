@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* ===========================================================
    🌤️ LIGHT THEME CSS — Clean, Modern, and Beginner-Friendly
    -----------------------------------------------------------
@@ -15,13 +14,13 @@
    ============================= */
 :root {
     /* --- Light Mode Palette --- */
-    --primary-color: #d91c1c;       /* Main blue accent */
+    --primary-color: #4a90e2;       /* Main blue accent */
     --secondary-color: #50e3c2;     /* Aqua secondary */
     --background-color: #f8fafc;    /* Page background */
     --text-color: #2d2d2d;          /* Body text */
     --light-gray: #f1f3f4;          /* Light surfaces */
     --dark-gray: #555;              /* Muted text */
-    --card-shadow: rgb(255, 118, 118);
+    --card-shadow: rgba(0, 0, 0, 0.05);
     --hover-shadow: rgba(0, 0, 0, 0.08);
 
     /* --- Typography --- */
@@ -43,23 +42,10 @@
    🧍‍♂️ BASE BODY STYLES
    Sets up fonts, background color, and global transitions.
    ============================= */
-=======
-:root {
-    --primary-color: #4a90e2;
-    --secondary-color: #50e3c2;
-    --background-color: #f4f7f6;
-    --text-color: #333;
-    --light-gray: #f9f9f9;
-    --dark-gray: #555;
-    --font-family: 'Poppins', sans-serif;
-}
-
->>>>>>> 8dbd0a58dab2e5c0aef9f666ae8a4175c016a4e1
 body {
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--text-color);
-<<<<<<< HEAD
     line-height: var(--body-line-height);
     margin: 0;
     padding: 0;
@@ -85,24 +71,10 @@ body {
     color: var(--primary-color) !important;
     font-size: 1.6rem;
     letter-spacing: 0.5px;
-=======
-    line-height: 1.8;
-}
-
-.navbar {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.navbar-brand {
-    font-weight: 600;
-    color: var(--primary-color) !important;
->>>>>>> 8dbd0a58dab2e5c0aef9f666ae8a4175c016a4e1
 }
 
 .nav-link {
     color: var(--dark-gray) !important;
-<<<<<<< HEAD
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
@@ -146,6 +118,14 @@ body {
     box-shadow: 0 12px 40px var(--hover-shadow);
 }
 
+.moto {
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(198, 102, 102, 0.05);
+    margin-top: 2.5rem;
+    background-color:  rgba(119, 119, 119, 0.524);
+}
+
 
 /* =============================
    📊 TABLE STYLING
@@ -180,6 +160,12 @@ body {
     box-shadow: 0 8px 16px var(--hover-shadow);
 }
 
+.table td, .table th {
+    border: none;
+    padding: 1.2rem;
+    vertical-align: middle;
+}
+
 
 /* =============================
    📝 FORM ELEMENTS
@@ -191,70 +177,10 @@ body {
     padding: 0.75rem 1rem;
     transition: all 0.3s ease;
     background-color: var(--light-gray);
-=======
-    font-weight: 400;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover, .nav-link.active {
-    color: var(--primary-color) !important;
-}
-
-.container {
-    padding: 2.5rem;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(198, 102, 102, 0.05);
-    margin-top: 2.5rem;
-}
-
-.moto {
-    padding: 2.5rem;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(198, 102, 102, 0.05);
-    margin-top: 2.5rem;
-    background-color:  rgba(119, 119, 119, 0.524);
-}
-
-.table {
-    border-collapse: separate;
-    border-spacing: 0 15px;
-}
-
-.table thead {
-    background-color: transparent;
-    color: var(--dark-gray);
-    font-weight: 600;
-}
-
-.table tbody tr {
-    background-color: var(--light-gray);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.table tbody tr:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
-
-.table td, .table th {
-    border: none;
-    padding: 1.2rem;
-    vertical-align: middle;
-}
-
-.form-control {
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    padding: 0.75rem 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
->>>>>>> 8dbd0a58dab2e5c0aef9f666ae8a4175c016a4e1
 }
 
 .form-control:focus {
     border-color: var(--primary-color);
-<<<<<<< HEAD
     box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.1);
     background-color: white;
 }
@@ -272,34 +198,29 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     cursor: pointer;
-=======
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
-}
-
-.btn {
-    border-radius: 8px;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
->>>>>>> 8dbd0a58dab2e5c0aef9f666ae8a4175c016a4e1
 }
 
 .btn-primary {
     background-color: var(--primary-color);
-<<<<<<< HEAD
     color: white;
     border: none;
     box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
-=======
-    border-color: var(--primary-color);
->>>>>>> 8dbd0a58dab2e5c0aef9f666ae8a4175c016a4e1
 }
 
 .btn-primary:hover {
     background-color: #357abd;
-<<<<<<< HEAD
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+}
+
+.btn-outline-danger {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-outline-danger:hover {
+    background-color: #e74c3c;
+    color: #fff;
 }
 
 
@@ -371,6 +292,23 @@ body {
 .social-icons a.phone { background: #25d366; }
 .social-icons a.email { background: #EA4335; }
 
+.mohit{
+    font-size: 30px;
+}
+
+.team-member {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 4px solid #eee;
+}
+
 
 /* =============================
    📱 RESPONSIVE DESIGN (Mobile)
@@ -390,101 +328,3 @@ body {
         padding: 0.75rem;
     }
 }
-=======
-    border-color: #357abd;
-    transform: translateY(-2px);
-}
-
-.btn-outline-danger {
-    color: #e74c3c;
-    border-color: #e74c3c;
-}
-
-.btn-outline-danger:hover {
-    background-color: #e74c3c;
-    color: #fff;
-}
-
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 2.5rem 0;
-    margin-top: 4rem;
-}
-
-.footer a {
-    color: var(--secondary-color);
-    transition: color 0.3s ease;
-}
-
-.footer a:hover {
-    color: #fff;
-}
-
-.social-icons a {
-    display: inline-block;
-    margin-right: 15px;
-    color: white;
-    padding: 10px;
-    border-radius: 50%;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.social-icons a.github { background: #333; }
-.social-icons a.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-.social-icons a.phone { background: #25d366; }
-.social-icons a.email { background: #EA4335; }
-
-.social-icons a:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-.mohit{
-    font-size: 30px;
-}
-
-
-
-
-
-
-
-
-    .hero-section {
-        background: url('https://source.unsplash.com/1600x900/?office,team') no-repeat center center;
-        background-size: cover;
-        color: white;
-        padding: 100px 0;
-        text-align: center;
-        margin-bottom: 4rem;
-    }
-    .hero-section h1 {
-        font-weight: bold;
-        font-size: 3.5rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-    }
-    .content-section {
-        padding: 2rem 0;
-    }
-    .content-section h2 {
-        font-weight: bold;
-        color: #0056b3;
-        margin-bottom: 1.5rem;
-        border-bottom: 3px solid #0056b3;
-        padding-bottom: 0.5rem;
-        display: inline-block;
-    }
-    .team-member {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-    .team-member img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 1rem;
-        border: 4px solid #eee;
-    }
->>>>>>> 8dbd0a58dab2e5c0aef9f666ae8a4175c016a4e1

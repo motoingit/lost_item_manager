@@ -1,0 +1,99 @@
+.popup {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #fff;
+    border: none;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    padding: 0;
+    border-radius: 12px;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth slide animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.popup.show {
+    display: block;
+    animation: slideIn 0.3s ease forwards;
+}
+
+.popup-content {
+    background: linear-gradient(135deg, #007bff, #00bcd4);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Button group inside the popup */
+.popup-content .btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Styling the buttons to match the theme */
+.popup-content .btn {
+    color: #007bff;
+    background-color: white;
+    border: none;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.popup-content .btn:hover {
+    background-color: #e9f2ff;
+    transform: scale(1.05);
+}
+
+.popup.hide {
+    opacity: 0;
+    transform: translateY(100px);
+    pointer-events: none;
+}
+
+/* Button styling from popup-content .btn */
+.btn-popup {
+    color: #000000;
+    background-color: white;
+    border: none;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #333;
+}
+
+.btn-popup:hover {
+    background-color: #008cff;
+    transform: scale(1.1);
+}
+
+/* Optional: space between buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}

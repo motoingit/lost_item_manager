@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<!-- Alert messages -->
+{% if allItems|length == 0 %}
+    {% if request.args.get('search') %}
+        <div class="alert alert-warning" role="alert">
+            🔍 No LostItemData found matching your search criteria.
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            📋 No data yet. Add one above!
+        </div>
+    {% endif %}
+{% else %}
+<!-- List of Lost Items -->
+<ul class="todo-list">
+    {% for todo in allItems %}
+    <li class="todo-item">
+        <div class="todo-content">
+            <h5 class="todo-title">
+                <span class="badge todo-badge">#{{ todo.sno }}</span>
+                {{ todo.title }}
+            </h5>
+            <p class="todo-desc">{{ todo.desc }}</p>
+            <small class="todo-date">Created: {{ todo.date_created.strftime('%Y-%m-%d %H:%M') }}</small>
+        </div>
+        <div class="todo-actions">
+            <a href="/update/{{todo.sno}}" class="btn-popup btn-update" title="Update this item">Update</a>
+            <a href="/delete/{{todo.sno}}" class="btn-popup btn-delete" title="Delete this item">Delete</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}

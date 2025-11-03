@@ -10,22 +10,37 @@
 
                                                                                 <!--?v=2.0-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
     <!-- SEO Meta Tags -->
     <meta name="description" content="A simple and efficient Lost And Found Web application built with Flask.">
-    <meta name="keywords" content="todo, flask, python, productivity, task management">
+    <meta name="keywords" content="LostItemData, flask, python, productivity, task management">
     <meta name="author" content="Mohit">
 
     <!-- Favicon -->
     <link rel="icon" href="https://www.google.com/s2/favicons?domain=flask.palletsprojects.com" type="image/x-icon">
 
     <!-- Open Graph Meta Tags (for social media sharing) -->
-    <meta property="og:title" content="Flask Todo App">
-    <meta property="og:description" content="A simple and efficient Todo application built with Flask.">
+    <meta property="og:title" content="Flask Lost item Data App">
+    <meta property="og:description" content="A simple and efficient  Lost item Data application built with Flask.">
     <meta property="og:image" content="https://source.unsplash.com/1200x630/?checklist,tasks">
     <meta property="og:url" content="{{ request.url }}">
     <meta property="og:type" content="website">
 </head>
 <body>
+    <!-- Popup for Undo/Redo -->
+    <div id="action-popup" class="popup">
+        <div class="popup-content">
+            <p>Commit ?</p>
+            <div class="btn-group">
+                <a href="/undo" class="btn btn-secondary" title="Undo last action">
+                    <i class="bi bi-arrow-counterclockwise"></i> Undo
+                </a>
+                <a href="/redo" class="btn btn-secondary" title="Redo last undone action">
+                    <i class="bi bi-arrow-clockwise"></i> Redo
+                </a>
+            </div>
+        </div>
+    </div>
     <!-- Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -41,7 +56,7 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/about">About Devloper's</a>
+                        <a class="nav-link" href="/about">About Developers</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logs">#Logs</a>
@@ -70,5 +85,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/test.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popup.js') }}"></script>
 </body>
 </html>

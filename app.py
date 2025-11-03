@@ -186,12 +186,13 @@ def index():
     if search_query:
         log_message('INFO', f'Searched for lost item: {search_query} by {search_by}')
         if search_by == 'id':
-            try:
-                sno = int(search_query)
-                query = query.filter(LostItem.sno == sno)
-            except ValueError:
-                # If the search query is not a valid integer, return no results
-                return render_template('index.html', allItems=[])
+                try:
+                    sno = int(search_query)
+                    query = query.filter(LostItem.sno == sno)
+                except ValueError:
+                    # If the search query is not a valid integer, return no results
+                    # Use consistent template variable name: all_items
+                    return render_template('index.html', all_items=[])
         elif search_by == 'title':
             query = query.filter(LostItem.title.contains(search_query))
         else:  # search_by == 'all'
@@ -212,7 +213,7 @@ def index():
 
     # Execute query
     all_items = query.all()
-    return render_template('index.html', allTodo=all_items)
+    return render_template('index.html', all_items=all_items)
 
 @app.route("/update/<int:sno>", methods=['GET', 'POST'])
 def update(sno):
@@ -246,7 +247,7 @@ def update(sno):
             log_message('INFO', f'Updated lost item #{sno}: {title}')
         return redirect('/')
 
-    return render_template('update.html', todo=item)
+    return render_template('update.html', item=item)
 
 @app.route("/delete/<int:sno>")
 def delete(sno):
@@ -334,6 +335,10 @@ def logs():
     print(all_logs)
     return render_template('logs.html', all_logs=all_logs)
 
+# NOTE: Database initialization command is defined earlier with error handling.
+# The earlier @app.cli.command("init-db") function will be used to initialize the DB.
+
+# can be [__main__], [filename],
 if __name__ == '__main__':
     print("I'm On Main\n")
     #? default
