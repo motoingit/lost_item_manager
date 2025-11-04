@@ -12,18 +12,31 @@
     It provides an intuitive interface for reporting, searching, and managing items — featuring undo/redo, detailed logging, and intelligent sorting.
   </p>
 
-  <!-- PROJECT BADGES -->
-  <p>
-    <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white"/>
-    <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"/>
-    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<!-- PROJECT BADGES -->
+  <p style="text-align:center; margin:20px 0;">
+    <a href="#" style="pointer-events:none; cursor:default; text-decoration:none; margin:0 5px;">
+      <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask Badge"/>
+    </a>
+    <a href="#" style="pointer-events:none; cursor:default; text-decoration:none; margin:0 5px;">
+      <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite Badge"/>
+    </a>
+    <a href="#" style="pointer-events:none; cursor:default; text-decoration:none; margin:0 5px;">
+      <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge"/>
+    </a>
   </p>
 
-  <p>
-    <a href="#installation-and-setup"><strong>🚀 Get Started</strong></a> • 
-    <a href="#features"><strong>✨ Features</strong></a> • 
-    <a href="#contact"><strong>📬 Contact</strong></a>
-  </p>
+<p>
+  <a href="#-installation-and-setup"><strong>🚀 Get Started</strong></a> • 
+  <a href="#-features"><strong>✨ Features</strong></a> • 
+  <a href="#-tech-stack"><strong>🧠 Tech Stack</strong></a> • 
+  <a href="#-core-logic"><strong>⚡ Core Logic</strong></a> • 
+  <a href="#-api-endpoints"><strong>🌐 API Endpoints</strong></a> • 
+  <a href="#-contributors"><strong>👥 Contributors</strong></a> • 
+  <a href="#-contact-details"><strong>📬 Contact</strong></a> • 
+  <a href="#-salutations"><strong>🫡 Salutation's</strong></a>
+</p>
+
+
 </div>
 
 ---
@@ -36,8 +49,6 @@
 - **Undo/Redo Stack:** Instantly revert or reapply recent actions using a stack-based algorithm.  
 - **Action Logging:** Every action is tracked in a separate database for auditability.  
 - **Timezone-Aware Timestamps:** All entries are recorded in IST (India Standard Time).  
-
----
 
 ---
 
@@ -72,33 +83,71 @@
   </table>
 </div>
 
-
 ## ⚙️ Installation and Setup
 
 Follow these steps to run the project locally:
 
+### 1️⃣ Clone the Repository
+
+  ```bash
+  git clone <your-repository-url>
+  ```
+
+  ```bash
+  cd <repo-folder>
+  ```
+
+---
+
+### 2️⃣ Create a Virtual Environment
+
+#### 🪟 For Windows
+
 ```bash
-# 1️⃣ Clone the repository
-git clone <your-repository-url>
-cd <repo-folder>
-
-# 2️⃣ Create virtual environment
 python -m venv venv
-venv\Scripts\activate   # Windows
-# OR
-source venv/bin/activate # macOS/Linux
+venv\Scripts\activate
+```
 
-# 3️⃣ Install dependencies
+#### 🍎 For macOS / 🐧 Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+### 3️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-# 4️⃣ Initialize the database
+---
+
+### 4️⃣ Initialize the Database
+
+```bash
 flask init-db
+```
 
-# 5️⃣ Run the application
+---
+
+### 5️⃣ Run the Application
+
+```bash
 flask run
 ```
 
-📍 Access at: [http://127.0.0.1:5000](http://127.0.0.1:5000)
+---
+
+### Optional : Access the Application
+
+After running, open this URL in your browser:
+
+  ```
+    http://127.0.0.1:5000
+  ```
 
 ---
 
@@ -131,7 +180,7 @@ flask run
 | `GET`  | `/logs`           | Shows a list of all logged system actions.                   |
 
 ## Markdown Stucture :
-```
+``` md
 └── 📁Repo1-LostandFound
     └── 📁instance
         ├── log.db
@@ -167,14 +216,43 @@ flask run
 
 ---
 
-## 👥 Contributors
+<!-- ## 👥 Contributors
 <a href="https://github.com/othneildrew/Best-README-Template/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=othneildrew/Best-README-Template" alt="contrib.rocks image" />
-</a>
+</a> -->
+
+## 👥 Contributors
+
+<p align ="center">
+  <a href="https://github.com/motoingit/" target="_blank">
+    <img src="https://tse2.mm.bing.net/th/id/OIP.BtzFhDnkG0lVPsrzv93TywHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" 
+        width="80" height="80"
+        alt="User1"
+        style="border-radius: 50%; object-fit: cover; border: 2px solid #000000ff;">
+  </a>
+  <a href="https://github.com/motoingit/" target="_blank">
+    <img src="https://th.bing.com/th/id/OIP.IGNf7GuQaCqz_RPq5wCkPgHaLH?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" 
+        width="80" height="80"
+        alt="User1"
+        style="border-radius: 50%; object-fit: cover; border: 2px solid #000000ff;">
+  </a>
+  <a href="https://github.com/motoingit/" target="_blank">
+    <img src="https://tse4.mm.bing.net/th/id/OIP.NGfztPBkW4-18NnAVGC7CwHaGb?w=1200&h=1042&rs=1&pid=ImgDetMain&o=7&rm=3" 
+        width="80" height="80"
+        alt="User1"
+        style="border-radius: 50%; object-fit: cover; border: 2px solid #000000ff;">
+  </a>
+  <a href="https://github.com/motoingit/" target="_blank">
+    <img src="https://th.bing.com/th/id/R.3bcbeff4ee0abb81ef150c9ea7e35730?rik=t3aMo1m4uUQi6g&riu=http%3a%2f%2fwww.newdesignfile.com%2fpostpic%2f2010%2f05%2ffree-stock-photos-people_102217.jpg&ehk=vGjIrntn5QyP%2fIXY2Ei7Iiz4%2fy%2byXvP8I8j0XxemwjI%3d&risl=&pid=ImgRaw&r=0" 
+        width="80" height="80"
+        alt="User1"
+        style="border-radius: 50%; object-fit: cover; border: 2px solid #000000ff;">
+  </a>
+</p>
 
 ---
 
-## 📬 Contact
+## 📬 Contact Details
 
 Stay connected and explore my work through the following platforms:
 
@@ -201,16 +279,10 @@ Stay connected and explore my work through the following platforms:
 **Date:** *October 2025*
 
 <hr>
-<p align="center" style="color:#00bfa5; font-style:italic; font-size:16px;">
-🧭 Because every lost item has a story — and every story deserves a return.
-</p>
+  <p align="center" style="color:#00bfa5; font-style:italic; font-size:16px;">
+  🧭 Because every lost item has a story — and every story deserves a return.
+  </p>
 <hr>
-
-<p align="center">
-  <a href="#readme-top">
-    <img src="https://img.shields.io/badge/▲%20Back%20to%20Top-000000?style=for-the-badge" alt="Back to Top"/>
-  </a>
-</p>
 
 ---
 
