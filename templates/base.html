@@ -10,7 +10,6 @@
 
                                                                                 <!--?v=2.0-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
     <!-- SEO Meta Tags -->
     <meta name="description" content="A simple and efficient Lost And Found Web application built with Flask.">
     <meta name="keywords" content="LostItemData, flask, python, productivity, task management">
@@ -37,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -67,6 +66,10 @@
                 <a href="mailto:moto-x@gmail.com" class="email"><i class="fas fa-envelope fa-lg"></i></a>
             </div>
         </div>
+
+        <p class="moto text-center">
+            <a class="nav-link active" aria-current="page" href="/faq">FAQ</a>
+        </p>
     </footer>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->

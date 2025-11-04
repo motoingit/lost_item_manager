@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+
+<!-- Undo / Redo buttons visible on the top row -->
+<div class="btn-group">
+                    <a href="/undo" class="btn btn-outline-light btn-sm btn-popup" title="Undo last action">
+                        <i class="fas fa-undo"></i> Undo
+                    </a>
+                    <a href="/redo" class="btn btn-outline-light btn-sm btn-popup" title="Redo last undone action">
+                        <i class="fas fa-redo"></i> Redo
+                    </a>
+</div>
+<!--fd-->
+<div class="container mt-5">
+    <div class="row">
+        <!-- Input Form Column -->
+        <div class="col-md-4">
+            <h2 class="text-center mb-4">Add Lost Data</h2>
+            <form action="/home" method="POST" class="shadow p-4 rounded">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Lost Title</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Write Title here..." required>
+                </div>
+                <div class="mb-3">
+                    <label for="desc" class="form-label">Description</label>
+                    <textarea name="desc" class="form-control" id="desc" rows="3" placeholder="Write Description here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 btn-popup">Report Lost</button>
+            </form>
+        </div>
+
+        <!-- Data View Column -->
+        <div class="col-md-8">
+            <h2 class="text-center mb-4">Lost Data</h2>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <form action="/home" method="GET" class="d-flex gap-2">
+                    <!-- Search Block -->
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request.args.get('search', '') }}">
+                        <select name="search_by" class="form-select" style="max-width: 70px;">
+                            <option value="all" {% if request.args.get('search_by') == 'all' %}selected{% endif %}>All</option>
+                            <option value="id" {% if request.args.get('search_by') == 'id' %}selected{% endif %}>Id</option>
+                            <option value="title" {% if request.args.get('search_by') == 'title' %}selected{% endif %}>Title</option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-secondary">Search</button>
+                    </div>
+
+                    <!-- Sort Block -->
+                    <div class="input-group">
+                        <select name="sort_by" class="form-select" style="max-width: 200px;">
+                            <option value="date_desc" {% if request.args.get('sort_by') == 'date_desc' %}selected{% endif %}>Date (Newest First)</option>
+                            <option value="date_asc" {% if request.args.get('sort_by') == 'date_asc' %}selected{% endif %}>Date (Oldest First)</option>
+                            <option value="name_asc" {% if request.args.get('sort_by') == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                            <option value="name_desc" {% if request.args.get('sort_by') == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-secondary">Sort</button>
+                    </div>
+                </form>
+
+            </div>
+            {% if all_items|length == 0 %}
+                {% if request.args.get('search') %}
+                    <div class="alert alert-warning" role="alert">
+                        No LostItemData found matching your search criteria.
+                    </div>
+                {% else %}
+                    <div class="alert alert-info" role="alert">
+                        No Data yet. Add one above!
+                    </div>
+                {% endif %}
+            {% else %}
+            <ul class="list-group">
+                {% for item in all_items %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-1">
+                            <span class="badge bg-secondary me-2">#{{ item.sno }}</span>
+                            {{ item.title }}
+                        </h5>
+                        <p class="mb-1">{{ item.desc }}</p>
+                        <small class="text-muted">Created: {{ item.date_created.strftime('%Y-%m-%d %H:%M') }}</small>
+                    </div>
+                    <div>
+                        <a href="/update/{{item.sno}}" class="btn btn-outline-secondary btn-sm btn-popup">Update</a>
+                        <a href="/delete/{{item.sno}}" class="btn btn-outline-danger btn-sm btn-popup">Delete</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
