@@ -20,9 +20,9 @@
   </p>
 
   <p>
-    <a href="#installation-and-setup"><strong>🚀 Get Started</strong></a> • 
-    <a href="#features"><strong>✨ Features</strong></a> • 
-    <a href="#contact"><strong>📬 Contact</strong></a>
+    <a href="#-installation-and-setup"><strong>🚀 Get Started</strong></a> • 
+    <a href="#-features"><strong>✨ Features</strong></a> • 
+    <a href="#-contact"><strong>📬 Contact</strong></a>
   </p>
 </div>
 
