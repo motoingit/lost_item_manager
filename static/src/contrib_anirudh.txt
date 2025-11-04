@@ -1,0 +1,8 @@
+Siddharth Negi - Contribution Details
+
+Role: Front End Developer
+
+Contributions:
+- Designed data presentation layouts
+- Worked on performance optimizations
+- Assisted in frontend testing and QA

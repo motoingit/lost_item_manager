@@ -1,90 +1,122 @@
-# Lost and Found Management System
+<!-- ======================================================================= -->
+<!--? PROJECT: Lost and Found Management System -->
+<!--? Author: Mohit | Date: October 2025 -->
+<!--? Description: Modern Flask-based web app for managing lost & found items -->
+<!-- ======================================================================= -->
 
-A simple yet powerful web application built with Flask to manage lost and found items. It provides a user-friendly interface to report, search, and manage items, incorporating features like undo/redo and detailed logging.
+<div align="center">
+  <img src="https://img.icons8.com/fluency/96/lost-and-found.png" alt="Lost and Found Logo" width="100">
+  <h1><strong>Lost and Found Management System</strong></h1>
+  <p>
+    A simple yet powerful web application built with Flask to manage lost and found items.<br>
+    It provides an intuitive interface for reporting, searching, and managing items — featuring undo/redo, detailed logging, and intelligent sorting.
+  </p>
 
-## Implemented
+  <!-- PROJECT BADGES -->
+  <p>
+    <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white"/>
+    <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+  </p>
 
-crud operations are - create read update delete
+  <p>
+    <a href="#installation-and-setup"><strong>🚀 Get Started</strong></a> • 
+    <a href="#features"><strong>✨ Features</strong></a> • 
+    <a href="#contact"><strong>📬 Contact</strong></a>
+  </p>
+</div>
 
-## Features
+---
 
-- **Report Lost Items**: Easily add new lost items with a title and description.
-- **Advanced Search**: Search for items by ID, title, or a general text search across title and description.
-- **Flexible Sorting**: Sort the item list by creation date or item title in ascending or descending order.
-- **CRUD Operations**: Full Create, Read, Update, and Delete functionality for lost items.
-- **Undo/Redo**: Revert or re-apply actions like adding, updating, or deleting items, powered by a stack data structure.
-- **Action Logging**: All significant actions are logged into a separate database for auditing and tracking purposes.
-- **Timezone-Aware Timestamps**: All timestamps are recorded in IST (India Standard Time) for consistency.
+## ✨ Features
+- **Report Lost Items:** Easily log lost items with title and description.  
+- **Advanced Search:** Search by ID, title, or keywords with database-level filtering.  
+- **Flexible Sorting:** Sort items by title or date (ascending/descending).  
+- **CRUD Operations:** Add, edit, view, and delete lost items seamlessly.  
+- **Undo/Redo Stack:** Instantly revert or reapply recent actions using a stack-based algorithm.  
+- **Action Logging:** Every action is tracked in a separate database for auditability.  
+- **Timezone-Aware Timestamps:** All entries are recorded in IST (India Standard Time).  
 
-## Tech Stack
+---
 
-- **Backend**: Python, Flask
-- **Database**: SQLite
-- **ORM**: Flask-SQLAlchemy
-- **Frontend**: HTML, Jinja2 Templating
+---
 
-## Installation and Setup
+## 🧠 Tech Stack
 
-Follow these steps to get the application running on your local machine.
+<div align ="left">
+  <table border="1" cellspacing="0" cellpadding="6">
+    <tr>
+      <th>🧩 Layer</th>
+      <th>🛠️ Technologies</th>
+    </tr>
+    <tr>
+      <td><b>Backend</b></td>
+      <td>Python, Flask</td>
+    </tr>
+    <tr>
+      <td><b>Database</b></td>
+      <td>SQLite</td>
+    </tr>
+    <tr>
+      <td><b>ORM</b></td>
+      <td>Flask-SQLAlchemy</td>
+    </tr>
+    <tr>
+      <td><b>Frontend</b></td>
+      <td>HTML5, Jinja2</td>
+    </tr>
+    <tr>
+      <td><b>Deployment</b></td>
+      <td>Gunicorn, dotenv</td>
+    </tr>
+  </table>
+</div>
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <your-repository-url>
-    cd <repository-folder>
-    ```
 
-2.  **Create a virtual environment:**
-    It's recommended to use a virtual environment to manage project dependencies.
-    ```bash
-    # For Windows
-    python -m venv venv
-    venv\Scripts\activate
+## ⚙️ Installation and Setup
 
-    # For macOS/Linux
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
+Follow these steps to run the project locally:
 
-3.  **Install dependencies:**
-    Create a `requirements.txt` file with the following content:
-    ```
-    Flask
-    Flask-SQLAlchemy
-    pytz
-    ```
-    Then, install the packages:
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+# 1️⃣ Clone the repository
+git clone <your-repository-url>
+cd <repo-folder>
 
-4.  **Initialize the database:**
-    The application uses two SQLite databases. Initialize them using the custom Flask CLI command.
-    ```bash
-    flask init-db
-    ```
-    This will create an `instance` folder containing `lost_items.db` and `log.db`.
+# 2️⃣ Create virtual environment
+python -m venv venv
+venv\Scripts\activate   # Windows
+# OR
+source venv/bin/activate # macOS/Linux
 
-5.  **Run the application:**
-    ```bash
-    flask run
-    ```
-    The application will be available at `http://127.0.0.1:5000`.
+# 3️⃣ Install dependencies
+pip install -r requirements.txt
 
-## How It Works
+# 4️⃣ Initialize the database
+flask init-db
 
-### Data Structures and Algorithms
+# 5️⃣ Run the application
+flask run
+```
 
-*   **Stack for Undo/Redo (`ActionStack`)**:
-    -   Every action (add, update, delete) is pushed onto a stack as a dictionary containing the action type and relevant data.
-    -   **Undo**: Pops the last action from the stack and performs the inverse operation (e.g., deletes an added item).
-    -   **Redo**: Moves a pointer forward in the stack to re-apply a previously undone action.
-    -   This provides O(1) time complexity for push, undo, and redo operations.
+📍 Access at: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-*   **Database-driven Search and Sort**:
-    -   **Search**: Instead of a manual linear search in Python, the application leverages the power of the database. It uses SQLAlchemy's `filter` with `contains` for efficient text-based searching (`LIKE` queries in SQL). Searching by a primary key (`sno`) is even faster.
-    -   **Sort**: Sorting is also delegated to the database using `ORDER BY` clauses, which is highly optimized, especially on indexed columns like `date_created` and `title`.
+---
 
-### API Endpoints
+## ⚡ Core Logic
+
+### 🧩 Stack for Undo/Redo
+- Every operation is pushed to an **ActionStack**.  
+- Undo → Pops last operation and reverses it.  
+- Redo → Reapplies previously undone action.  
+- All operations are **O(1)** — efficient and consistent.
+
+### 🗄️ Search and Sort
+- Search → SQLAlchemy `filter` + `contains()` for keyword queries.  
+- Sort → SQL `ORDER BY` for database-level sorting (optimized on indexed fields).  
+
+---
+
+## 🌐 API Endpoints
 
 | Method | Endpoint          | Description                                                  |
 |--------|-------------------|--------------------------------------------------------------|
@@ -98,7 +130,91 @@ Follow these steps to get the application running on your local machine.
 | `GET`  | `/about`          | Displays the About page.                                     |
 | `GET`  | `/logs`           | Shows a list of all logged system actions.                   |
 
+## Markdown Stucture :
+```
+└── 📁Repo1-LostandFound
+    └── 📁instance
+        ├── log.db
+        ├── lost_items.db
+    └── 📁static
+        └── 📁css
+            ├── popup.css
+            ├── style.css
+        └── 📁js
+            ├── popup.js
+            ├── test.js
+        └── 📁src
+            ├── alok.jpg
+            ├── anirudh.jpg
+            ├── contrib_alok.txt
+            ├── contrib_anirudh.txt
+            ├── contrib_mohit.txt
+            ├── contrib_ritik.txt
+            ├── contrib_siddharth.txt
+            ├── mohit.jpg
+            ├── ritik.jpg
+            ├── siddu.jpg
+    └── 📁templates
+        ├── about.html
+        ├── base.html
+        ├── index.html
+        ├── logs.html
+        ├── update.html
+    ├── app.py
+    ├── README.md
+    └── requirements.txt
+```
+
 ---
 
-*Author: Mohit*
-*Date: October 2025*
+## 👥 Contributors
+<a href="https://github.com/othneildrew/Best-README-Template/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=othneildrew/Best-README-Template" alt="contrib.rocks image" />
+</a>
+
+---
+
+## 📬 Contact
+
+Stay connected and explore my work through the following platforms:
+
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/your_username)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/your_username)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@your_username)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://facebook.com/your_username)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your_email@example.com)
+[![Phone](https://img.shields.io/badge/Call-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](tel:+911234567890)
+
+---
+
+## 🌐 Other Platforms
+
+[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/your_username)
+[![HackerEarth](https://img.shields.io/badge/HackerEarth-323754?style=for-the-badge&logo=hackerearth&logoColor=white)](https://www.hackerearth.com/@your_username)
+[![GitHub](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your_username)
+
+---
+
+## 🫡 Salutation's
+
+**Author:** *Mohit*  
+**Date:** *October 2025*
+
+<hr>
+<p align="center" style="color:#00bfa5; font-style:italic; font-size:16px;">
+🧭 Because every lost item has a story — and every story deserves a return.
+</p>
+<hr>
+
+<p align="center">
+  <a href="#readme-top">
+    <img src="https://img.shields.io/badge/▲%20Back%20to%20Top-000000?style=for-the-badge" alt="Back to Top"/>
+  </a>
+</p>
+
+---
+
+<!-- ======================================================================= -->
+<!--? END OF FILE | README.MD STRUCTURED WITH PROFESSIONAL VISUAL HIERARCHY -->
+<!--? Designed for clarity, presentation, and GitHub optimization -->
+<!-- ======================================================================= -->
