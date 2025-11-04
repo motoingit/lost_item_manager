@@ -25,7 +25,6 @@
     </a>
   </p>
 
-<<<<<<< HEAD
 <p>
   <a href="#-installation-and-setup"><strong>🚀 Get Started</strong></a> • 
   <a href="#-features"><strong>✨ Features</strong></a> • 
@@ -38,13 +37,6 @@
 </p>
 
 
-=======
-  <p>
-    <a href="#-installation-and-setup"><strong>🚀 Get Started</strong></a> • 
-    <a href="#-features"><strong>✨ Features</strong></a> • 
-    <a href="#-contact"><strong>📬 Contact</strong></a>
-  </p>
->>>>>>> 6245551042c98fd5cb79bcbe072c7ac01e6c8b41
 </div>
 
 ---
